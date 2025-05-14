@@ -1,0 +1,32 @@
+{
+  "name": "ganimation_package",
+  "version": "1.0.0",
+  "description": "A package for svg animation",
+  "keywords": [
+    "animation",
+    "typescript"
+  ],
+  "homepage": "https://github.com/GhassenAbida/ganimation_package",
+  "bugs": {
+    "url": "https://github.com/GhassenAbida/ganimation_package/issues"
+  },
+  "author": "Ghassen Abida <gh.abida@outlook.com> (https://totaltypescript.com)",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GhassenAbida/ganimation_package.git"
+  },
+  "files": [
+    "dist"
+  ],
+  "type": "module",
+  "license": "MIT",
+  "scripts": {
+    "build": "tsc",
+    "ci": "npm run build",
+    "format": "prettier --write ."
+  },
+  "devDependencies": {
+    "prettier": "^3.5.3",
+    "typescript": "^5.8.3"
+  }
+}
