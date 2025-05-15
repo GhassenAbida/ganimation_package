@@ -27,7 +27,9 @@ npm install ganimation_package
 # ensure peer dependencies are installed:
 npm install react react-dom framer-motion flubber
 
-🚀 Quick Start:
+ ---
+
+##  🚀 Quick Start:
 
 import React from "react";
 import { InterpolatedSvgsAnimation } from "ganimation_package";
@@ -45,16 +47,20 @@ export function App() {
   );
 }
 
+---
 
-🛠️ API Reference
+## 🛠️ API Reference
 | Prop        | Type            | Required | Description                                 |
 | ----------- | --------------- | :------: | ------------------------------------------- |
 | `svgs`      | `AnimationSvgs` |     ✅    | Array of SVG states to interpolate between. |
 | `fill`      | `string`        |     –    | Override for every path’s fill color.       |
 | `className` | `string`        |     –    | CSS classes for the wrapper `<div>`.        |
 
+---
 
-Hooks & Utilities:
+
+
+## Hooks & Utilities:
     useMergedPaths(svgs: AnimationSvgs): Record<string,SvgPath>
     Returns a map of every unique path by id, using the first occurrence.
 
