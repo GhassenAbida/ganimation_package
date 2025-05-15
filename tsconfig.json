@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+    "jsx": "react",
     /* Base Options: */
     "esModuleInterop": true,
     "skipLibCheck": true,
@@ -25,6 +26,10 @@
     "declaration": true,
 
     /* AND if you're building for a library in a monorepo: */
-    "declarationMap": true
+    "declarationMap": true,
+    "baseUrl": ".",
+    "paths": {
+      "ganimation_package": ["src"]
+    }
   }
 }

@@ -1,1 +1,2 @@
-export { add } from './utils.js';
+export * from './types.js';
+export { InterpolatedSvgsAnimation } from './components/InterpolatedSvgsAnimation.js';
