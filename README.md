@@ -1,4 +1,4 @@
-# 🌀 ganimation_package
+# 🌀 ganimation\_package
 
 A lightweight, type-safe TypeScript package for animating SVG path transitions using [flubber](https://github.com/veltman/flubber) and [framer-motion](https://www.framer.com/motion/) in React. Interpolate smoothly between any number of SVG states with minimal setup.
 
@@ -6,31 +6,34 @@ A lightweight, type-safe TypeScript package for animating SVG path transitions u
 
 ## ✨ Key Features
 
-- **Smooth path interpolation**  
+* **Smooth path interpolation**
   Transition seamlessly between multiple SVG shapes.
 
-- **Type-safe models**  
+* **Type-safe models**
   `AnimationSvgs`, `Svg`, `SvgPath` ensure correct data structures.
 
-- **One-liner React component**  
+* **One-liner React component**
   `<InterpolatedSvgsAnimation />` handles timing, interpolation, and rendering.
 
-- **Modular hooks & utilities**  
+* **Modular hooks & utilities**
   `useMergedPaths`, `useInterpolators`, plus helper functions for custom flows.
 
 ---
 
 ## 📦 Installation
 
+Install the package and its peers:
+
 ```bash
 npm install ganimation_package
-# ensure peer dependencies are installed:
 npm install react react-dom framer-motion flubber
+```
 
- ---
+---
 
-##  🚀 Quick Start:
+## 🚀 Quick Start
 
+```tsx
 import React from "react";
 import { InterpolatedSvgsAnimation } from "ganimation_package";
 import { svgs } from "./sampleSvgs";
@@ -46,10 +49,12 @@ export function App() {
     </div>
   );
 }
+```
 
 ---
 
 ## 🛠️ API Reference
+
 | Prop        | Type            | Required | Description                                 |
 | ----------- | --------------- | :------: | ------------------------------------------- |
 | `svgs`      | `AnimationSvgs` |     ✅    | Array of SVG states to interpolate between. |
@@ -58,18 +63,55 @@ export function App() {
 
 ---
 
+## 🔧 Hooks & Utilities
 
+* **`useMergedPaths(svgs: AnimationSvgs): Record<string, SvgPath>`**
+  Returns a map of every unique path by `id`, using the first occurrence.
 
-## Hooks & Utilities:
-    useMergedPaths(svgs: AnimationSvgs): Record<string,SvgPath>
-    Returns a map of every unique path by id, using the first occurrence.
+* **`useInterpolators(svgs: AnimationSvgs): Array<Record<string,(t:number)=>string>>`**
+  Pre-computes flubber interpolation functions for each transition segment.
 
-    useInterpolators(svgs: AnimationSvgs): Array<Record<string,(t:number)=>string>>
-    Pre-computes flubber interpolation functions for each transition segment.
+* **Helpers** in `src/utils/svgHelpers.ts`:
 
-    Helpers in src/utils/svgHelpers.ts:
+  * `mergePaths(svgs: AnimationSvgs)`
+  * `createInterpolators(svgs: AnimationSvgs)`
 
-    mergePaths(svgs: AnimationSvgs)
+---
 
-    createInterpolators(svgs: AnimationSvgs)
+## 📂 Project Structure
+
+```text
+ganimation_package/
+├─ src/
+│  ├─ components/
+│  │   └─ InterpolatedSvgsAnimation.tsx
+│  ├─ hooks/
+│  │   ├─ useMergedPaths.ts
+│  │   └─ useInterpolators.ts
+│  ├─ types.ts
+│  ├─ utils/
+│  │   └─ svgHelpers.ts
+│  └─ index.ts
+├─ sample/
+│   └─ sampleSvgs.ts
+├─ README.md
+├─ package.json
+├─ tsconfig.json
+└─ .npmignore
 ```
+
+---
+
+## 👥 Contributing
+
+1. Fork the repository
+2. Create a feature branch (`git checkout -b my-feature`)
+3. Commit your changes (`git commit -m "feat: ..."`)
+4. Push to your branch (`git push origin my-feature`)
+5. Open a Pull Request
+
+---
+
+## 📜 License
+
+MIT © Ghassen Abida && WAHIB MKADMI
