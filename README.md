@@ -6,17 +6,11 @@ A lightweight, type-safe TypeScript package for animating SVG path transitions u
 
 ## ✨ Key Features
 
-- **Smooth path interpolation**
-  Transition seamlessly between multiple SVG shapes.
-
-- **Type-safe models**
-  `AnimationSvgs`, `Svg`, `SvgPath` ensure correct data structures.
-
-- **One-liner React component**
-  `<InterpolatedSvgsAnimation />` handles timing, interpolation, and rendering.
-
-- **Modular hooks & utilities**
-  `useMergedPaths`, `useInterpolators`, plus helper functions for custom flows.
+- **Smooth Shape Morphing**: Automatically interpolates (morphs) between different SVG paths using `flubber`.
+- **Smart Transitions**: Handles paths appearing and disappearing gracefully by animating opacity.
+- **Fully Customizable**: Control `duration`, `ease`, and `loop` settings.
+- **High Performance**: Uses `framer-motion`'s `useTransform` to animate outside the React render cycle.
+- **Type-Safe**: Written in TypeScript with strict definitions.
 
 ---
 
@@ -36,13 +30,16 @@ npm install react react-dom framer-motion flubber
 ```tsx
 import React from 'react';
 import { InterpolatedSvgsAnimation } from 'ganimation_package';
-import { svgs } from './sampleSvgs';
+import { svgs } from './mySvgs';
 
 export function App() {
   return (
     <div style={{ width: 200, height: 200 }}>
       <InterpolatedSvgsAnimation
         svgs={svgs}
+        duration={3}
+        ease="easeInOut"
+        loop={true}
         fill="#1E40AF"
         className="rounded-2xl shadow-lg"
       />
@@ -55,11 +52,14 @@ export function App() {
 
 ## 🛠️ API Reference
 
-| Prop        | Type            | Required | Description                                 |
-| ----------- | --------------- | :------: | ------------------------------------------- |
-| `svgs`      | `AnimationSvgs` |    ✅    | Array of SVG states to interpolate between. |
-| `fill`      | `string`        |    –     | Override for every path’s fill color.       |
-| `className` | `string`        |    –     | CSS classes for the wrapper `<div>`.        |
+| Prop        | Type                  | Default    | Description                                                                 |
+| ----------- | --------------------- | :--------: | --------------------------------------------------------------------------- |
+| `svgs`      | `AnimationSvgs`       |     ✅     | Array of SVG states (frames) to interpolate between.                        |
+| `duration`  | `number`              | `5`        | Total duration of one full animation cycle in seconds.                      |
+| `ease`      | `string` \| `number[]`| `"linear"` | Easing function (e.g., `"easeInOut"`, `"circOut"`, or bezier array).       |
+| `loop`      | `boolean`             | `true`     | Whether the animation should loop infinitely.                               |
+| `fill`      | `string`              |    –       | Override fill color for all paths.                                          |
+| `className` | `string`              |    –       | CSS classes for the wrapper `<div>`.                                        |
 
 ---
 
