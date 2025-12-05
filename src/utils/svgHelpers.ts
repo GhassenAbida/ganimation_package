@@ -1,18 +1,18 @@
-import type { AnimationSvgs, SvgPath } from "../types.js";
-import { interpolate } from "flubber";
+import type { AnimationSvgs, SvgPath } from '../types.js';
+import { interpolate } from 'flubber';
 
 export function mergePaths(svgs: AnimationSvgs): Record<string, SvgPath> {
   const map: Record<string, SvgPath> = {};
-  svgs.forEach(svg =>
-    svg.paths.forEach(path => {
+  svgs.forEach((svg) =>
+    svg.paths.forEach((path) => {
       if (!map[path.id]) map[path.id] = { ...path };
-    })
+    }),
   );
   return map;
 }
 
 export function createPathInterpolators(
-  svgs: AnimationSvgs
+  svgs: AnimationSvgs,
 ): Array<Record<string, (t: number) => string>> {
   return svgs.map((current, i) => {
     const next = svgs[(i + 1) % svgs.length];
@@ -44,7 +44,7 @@ export function createPathInterpolators(
 }
 
 export function createOpacityInterpolators(
-  svgs: AnimationSvgs
+  svgs: AnimationSvgs,
 ): Array<Record<string, (t: number) => number>> {
   return svgs.map((current, i) => {
     const next = svgs[(i + 1) % svgs.length];

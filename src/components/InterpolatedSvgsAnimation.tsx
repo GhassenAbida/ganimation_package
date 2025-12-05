@@ -65,11 +65,11 @@ export function InterpolatedSvgsAnimation({
   const { paths: pathInterpolators, opacities: opacityInterpolators } =
     useInterpolators(svgs);
 
-  console.log('Animation Debug:', { 
-    svgsCount: svgs.length, 
+  console.log('Animation Debug:', {
+    svgsCount: svgs.length,
     mergedCount: Object.keys(merged).length,
     interpolatorsCount: pathInterpolators.length,
-    viewBox
+    viewBox,
   });
 
   useEffect(() => {

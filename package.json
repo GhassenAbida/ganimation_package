@@ -1,6 +1,6 @@
 {
-  "name": "ganimation_package",
-  "version": "2.0.0",
+  "name": "@ghassen_abida/svg_animation",
+  "version": "1.0.0",
   "description": "A package for svg animation",
   "keywords": [
     "animation",

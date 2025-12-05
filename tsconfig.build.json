@@ -1,0 +1,17 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "outDir": "dist",
+    "declaration": true,
+    "declarationMap": true
+  },
+  "include": ["src/**/*"],
+  "exclude": [
+    "src/**/*.test.ts",
+    "src/playground.tsx",
+    "src/sample/**/*",
+    "vite.config.ts",
+    "dist",
+    "node_modules"
+  ]
+}

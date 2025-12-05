@@ -1,6 +1,9 @@
 import { describe, it, expect } from 'vitest';
 import type { AnimationSvgs, SvgPath } from '../src/types.js';
-import { mergePaths, createPathInterpolators } from '../src/utils/svgHelpers.js';
+import {
+  mergePaths,
+  createPathInterpolators,
+} from '../src/utils/svgHelpers.js';
 
 const dummyAttrs = {
   width: '10',
@@ -32,7 +35,9 @@ describe('mergePaths', () => {
     ];
 
     const result = mergePaths(svgs);
-    expect(Object.keys(result)).toEqual(expect.arrayContaining(['A', 'B', 'C']));
+    expect(Object.keys(result)).toEqual(
+      expect.arrayContaining(['A', 'B', 'C']),
+    );
     expect(result['A']).toEqual({ id: 'A', d: 'M0', fill: '#000' });
     expect(result['B']).toEqual({ id: 'B', d: 'M1', fill: '#111' });
     expect(result['C']).toEqual({ id: 'C', d: 'M3', fill: '#333' });

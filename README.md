@@ -19,7 +19,7 @@ A lightweight, type-safe TypeScript package for animating SVG path transitions u
 Install the package and its peers:
 
 ```bash
-npm install ganimation_package
+npm install @ghassen_abida/svg_animation
 npm install react react-dom framer-motion flubber
 ```
 
@@ -29,7 +29,7 @@ npm install react react-dom framer-motion flubber
 
 ```tsx
 import React from 'react';
-import { InterpolatedSvgsAnimation } from 'ganimation_package';
+import { InterpolatedSvgsAnimation } from '@ghassen_abida/svg_animation';
 import { svgs } from './mySvgs';
 
 export function App() {
@@ -52,14 +52,14 @@ export function App() {
 
 ## 🛠️ API Reference
 
-| Prop        | Type                  | Default    | Description                                                                 |
-| ----------- | --------------------- | :--------: | --------------------------------------------------------------------------- |
-| `svgs`      | `AnimationSvgs`       |     ✅     | Array of SVG states (frames) to interpolate between.                        |
-| `duration`  | `number`              | `5`        | Total duration of one full animation cycle in seconds.                      |
-| `ease`      | `string` \| `number[]`| `"linear"` | Easing function (e.g., `"easeInOut"`, `"circOut"`, or bezier array).       |
-| `loop`      | `boolean`             | `true`     | Whether the animation should loop infinitely.                               |
-| `fill`      | `string`              |    –       | Override fill color for all paths.                                          |
-| `className` | `string`              |    –       | CSS classes for the wrapper `<div>`.                                        |
+| Prop        | Type                   |  Default   | Description                                                          |
+| ----------- | ---------------------- | :--------: | -------------------------------------------------------------------- |
+| `svgs`      | `AnimationSvgs`        |     ✅     | Array of SVG states (frames) to interpolate between.                 |
+| `duration`  | `number`               |    `5`     | Total duration of one full animation cycle in seconds.               |
+| `ease`      | `string` \| `number[]` | `"linear"` | Easing function (e.g., `"easeInOut"`, `"circOut"`, or bezier array). |
+| `loop`      | `boolean`              |   `true`   | Whether the animation should loop infinitely.                        |
+| `fill`      | `string`               |     –      | Override fill color for all paths.                                   |
+| `className` | `string`               |     –      | CSS classes for the wrapper `<div>`.                                 |
 
 ---
 
