@@ -1,5 +1,6 @@
-/*
-import type { Svg, SvgPath, AnimationSvgs } from '../src/types.js';
+import { describe, it, expect } from 'vitest';
+import type { AnimationSvgs, SvgPath } from '../src/types.js';
+import { mergePaths, createPathInterpolators } from '../src/utils/svgHelpers.js';
 
 const dummyAttrs = {
   width: '10',
@@ -38,30 +39,32 @@ describe('mergePaths', () => {
   });
 });
 
-describe('createInterpolators', () => {
+describe('createPathInterpolators', () => {
   it('returns an array of maps of interpolation functions for each transition', () => {
     const svgs: AnimationSvgs = [
       {
         filename: 'start',
         svgAttrs: dummyAttrs,
-        paths: [{ id: 'X', d: 'M0', fill: '#000' }],
+        paths: [{ id: 'X', d: 'M0,0 L10,0', fill: '#000' }],
       },
       {
         filename: 'end',
         svgAttrs: dummyAttrs,
-        paths: [{ id: 'X', d: 'M10', fill: '#000' }],
+        paths: [{ id: 'X', d: 'M0,0 L20,0', fill: '#000' }],
       },
     ];
 
-    const list = createInterpolators(svgs);
+    const list = createPathInterpolators(svgs);
     expect(Array.isArray(list)).toBe(true);
     expect(list).toHaveLength(2);
 
     const map0 = list[0];
-    expect(typeof map0['X']).toBe('function');
-    const fn = map0['X']!;
-    expect(fn(0)).toBe('M0');
-    expect(fn(1)).toBe('M10');
+    expect(map0).toBeDefined();
+    if (map0) {
+      expect(typeof map0['X']).toBe('function');
+      const fn = map0['X'] as (t: number) => string;
+      expect(fn(0)).toBe('M0,0 L10,0');
+      expect(fn(1)).toBe('M0,0 L20,0');
+    }
   });
 });
-*/

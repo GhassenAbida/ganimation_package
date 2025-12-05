@@ -23,4 +23,7 @@ export interface InterpolatedSvgsAnimationProps {
   fill?: string;
   svgs: AnimationSvgs;
   className?: string;
+  duration?: number;
+  ease?: any; // framer-motion ease type
+  loop?: boolean;
 }
