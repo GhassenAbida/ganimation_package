@@ -35,6 +35,7 @@ const InterpolatedPath = ({
     const idx = Math.floor(val) % totalFrames;
     const frac = val - Math.floor(val);
     const fn = opacityInterpolators?.[idx]?.[pathId];
+    // console.log('Path Debug:', { pathId, idx, frac, hasFn: !!fn });
     // If no interpolator exists for this transition, it means the path is not involved in current or next frame.
     // Thus it should be invisible.
     return fn ? fn(frac) : 0;
@@ -63,6 +64,13 @@ export function InterpolatedSvgsAnimation({
   const merged = useMergedPaths(svgs);
   const { paths: pathInterpolators, opacities: opacityInterpolators } =
     useInterpolators(svgs);
+
+  console.log('Animation Debug:', { 
+    svgsCount: svgs.length, 
+    mergedCount: Object.keys(merged).length,
+    interpolatorsCount: pathInterpolators.length,
+    viewBox
+  });
 
   useEffect(() => {
     const controls = animate(progress, svgs.length, {
