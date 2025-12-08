@@ -20,7 +20,7 @@ Install the package and its peers:
 
 ```bash
 npm install @ghassen_abida/svg_animation
-npm install react react-dom framer-motion flubber
+npm install react react-dom framer-motion flubber tailwind-merge
 ```
 
 ---
