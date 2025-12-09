@@ -8,11 +8,8 @@ export interface SvgPath {
 export interface Svg {
   filename: string;
   svgAttrs: {
-    width: string;
-    height: string;
     viewBox: string;
-    fill: string;
-    xmlns: string;
+    [key: string]: any;
   };
   paths: SvgPath[];
 }

@@ -60,7 +60,7 @@ export function InterpolatedSvgsAnimation({
   loop = true,
 }: InterpolatedSvgsAnimationProps) {
   const progress = useMotionValue(0);
-  const viewBox = svgs[0]?.svgAttrs?.viewBox || '0 0 100 100';
+  const { viewBox = '0 0 100 100', ...otherSvgAttrs } = svgs[0]?.svgAttrs || {};
   const merged = useMergedPaths(svgs);
   const { paths: pathInterpolators, opacities: opacityInterpolators } =
     useInterpolators(svgs);
@@ -91,6 +91,7 @@ export function InterpolatedSvgsAnimation({
         xmlns="http://www.w3.org/2000/svg"
         preserveAspectRatio="xMidYMid meet"
         style={{ width: '100%', height: '100%' }}
+        {...otherSvgAttrs}
       >
         {Object.values(merged).map((path) => (
           <InterpolatedPath
