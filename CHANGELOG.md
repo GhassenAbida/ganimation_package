@@ -1,5 +1,11 @@
 # ganimation_package
 
+## 1.0.3
+
+### Patch Changes
+
+- Fix: Spread SVG attributes (like stroke, strokeWidth) to the rendered SVG element.
+
 ## 1.0.2
 
 ### Patch Changes
