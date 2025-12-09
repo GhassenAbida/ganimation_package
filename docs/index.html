@@ -1,21 +1,22 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Ganimation Ultimate Showcase</title>
-    <script>
-      window.process = { env: { NODE_ENV: 'development' } };
-      window.onerror = function (message, source, lineno, colno, error) {
-        const errorDiv = document.getElementById('error-log');
-        if (errorDiv) {
-          errorDiv.style.display = 'block';
-          errorDiv.innerHTML += `<p><strong>Error:</strong> ${message} at ${source}:${lineno}</p>`;
-        }
-        console.error(error);
-      };
-    </script>
-    <script type="importmap">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ganimation Ultimate Showcase</title>
+  <script>
+    window.process = { env: { NODE_ENV: 'development' } };
+    window.onerror = function (message, source, lineno, colno, error) {
+      const errorDiv = document.getElementById('error-log');
+      if (errorDiv) {
+        errorDiv.style.display = 'block';
+        errorDiv.innerHTML += `<p><strong>Error:</strong> ${message} at ${source}:${lineno}</p>`;
+      }
+      console.error(error);
+    };
+  </script>
+  <script type="importmap">
       {
         "imports": {
           "react": "https://esm.sh/react@18.2.0?dev",
@@ -23,290 +24,291 @@
           "framer-motion": "https://esm.sh/framer-motion@11.1.7?dev&deps=react@18.2.0,react-dom@18.2.0",
           "flubber": "https://esm.sh/flubber@0.4.2",
           "tailwind-merge": "https://esm.sh/tailwind-merge@3.3.0",
-          "@ghassen_abida/svg_animation": "https://esm.sh/@ghassen_abida/svg_animation@latest?dev&external=react,react-dom,framer-motion,flubber"
+          "@ghassen_abida/svg_animation": "https://esm.sh/@ghassen_abida/svg_animation@1.0.3?dev&external=react,react-dom,framer-motion,flubber"
         }
       }
     </script>
-    <style>
-      body {
-        font-family:
-          'Inter',
-          system-ui,
-          -apple-system,
-          sans-serif;
-        background-color: #111827;
-        color: #f3f4f6;
-        margin: 0;
-        padding: 40px;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-      }
+  <style>
+    body {
+      font-family:
+        'Inter',
+        system-ui,
+        -apple-system,
+        sans-serif;
+      background-color: #111827;
+      color: #f3f4f6;
+      margin: 0;
+      padding: 40px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
 
-      h1 {
-        font-size: 2.5rem;
-        font-weight: 800;
-        margin-bottom: 0.5rem;
-        background: linear-gradient(to right, #60a5fa, #a78bfa);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-      }
+    h1 {
+      font-size: 2.5rem;
+      font-weight: 800;
+      margin-bottom: 0.5rem;
+      background: linear-gradient(to right, #60a5fa, #a78bfa);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
 
-      p.subtitle {
-        color: #9ca3af;
-        margin-bottom: 3rem;
-        font-size: 1.1rem;
-      }
+    p.subtitle {
+      color: #9ca3af;
+      margin-bottom: 3rem;
+      font-size: 1.1rem;
+    }
 
-      .grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-        gap: 2rem;
-        width: 100%;
-        max-width: 1200px;
-      }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+      width: 100%;
+      max-width: 1200px;
+    }
 
-      .card {
-        background: #1f2937;
-        border: 1px solid #374151;
-        border-radius: 1rem;
-        padding: 2rem;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        transition: transform 0.2s;
-      }
+    .card {
+      background: #1f2937;
+      border: 1px solid #374151;
+      border-radius: 1rem;
+      padding: 2rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      transition: transform 0.2s;
+    }
 
-      .card:hover {
-        transform: translateY(-5px);
-        border-color: #60a5fa;
-      }
+    .card:hover {
+      transform: translateY(-5px);
+      border-color: #60a5fa;
+    }
 
-      .card h2 {
-        font-size: 1.25rem;
-        margin-bottom: 1.5rem;
-        color: #e5e7eb;
-      }
+    .card h2 {
+      font-size: 1.25rem;
+      margin-bottom: 1.5rem;
+      color: #e5e7eb;
+    }
 
-      .card .demo-container {
-        width: 120px;
-        height: 120px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        background: #111827;
-        border-radius: 0.75rem;
-        box-shadow: inset 0 2px 4px 0 rgba(0, 0, 0, 0.3);
-      }
+    .card .demo-container {
+      width: 120px;
+      height: 120px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: #111827;
+      border-radius: 0.75rem;
+      box-shadow: inset 0 2px 4px 0 rgba(0, 0, 0, 0.3);
+    }
 
-      .badge {
-        margin-top: 1rem;
-        padding: 0.25rem 0.75rem;
-        background: #374151;
-        border-radius: 9999px;
-        font-size: 0.75rem;
-        color: #d1d5db;
-        font-family: monospace;
-      }
+    .badge {
+      margin-top: 1rem;
+      padding: 0.25rem 0.75rem;
+      background: #374151;
+      border-radius: 9999px;
+      font-size: 0.75rem;
+      color: #d1d5db;
+      font-family: monospace;
+    }
 
-      #error-log {
-        display: none;
-        margin-top: 20px;
-        padding: 15px;
-        background-color: #7f1d1d;
-        color: #fecaca;
-        border-radius: 8px;
-        width: 100%;
-        max-width: 800px;
-        font-family: monospace;
-        white-space: pre-wrap;
-      }
-    </style>
-  </head>
+    #error-log {
+      display: none;
+      margin-top: 20px;
+      padding: 15px;
+      background-color: #7f1d1d;
+      color: #fecaca;
+      border-radius: 8px;
+      width: 100%;
+      max-width: 800px;
+      font-family: monospace;
+      white-space: pre-wrap;
+    }
+  </style>
+</head>
 
-  <body>
-    <h1>Ganimation Showcase</h1>
-    <p class="subtitle">
-      High-performance SVG morphing powered by @ghassen_abida/svg_animation
-    </p>
+<body>
+  <h1>Ganimation Showcase</h1>
+  <p class="subtitle">
+    High-performance SVG morphing powered by @ghassen_abida/svg_animation
+  </p>
 
-    <div id="root"></div>
-    <div id="error-log"></div>
+  <div id="root"></div>
+  <div id="error-log"></div>
 
-    <script type="module">
-      import React from 'react';
-      import { createRoot } from 'react-dom/client';
-      import { InterpolatedSvgsAnimation } from '@ghassen_abida/svg_animation';
+  <script type="module">
+    import React from 'react';
+    import { createRoot } from 'react-dom/client';
+    import { InterpolatedSvgsAnimation } from '@ghassen_abida/svg_animation';
 
-      // --- Demo Data ---
+    // --- Demo Data ---
 
-      // 1. Menu <-> Close
-      const menuSvgs = [
-        {
-          filename: 'menu.svg',
-          svgAttrs: {
-            viewBox: '0 0 24 24',
-            fill: 'none',
-            stroke: 'currentColor',
-            strokeWidth: '2',
-            strokeLinecap: 'round',
-            strokeLinejoin: 'round',
+    // 1. Menu <-> Close
+    const menuSvgs = [
+      {
+        filename: 'menu.svg',
+        svgAttrs: {
+          viewBox: '0 0 24 24',
+          fill: 'none',
+          stroke: 'currentColor',
+          strokeWidth: '2',
+          strokeLinecap: 'round',
+          strokeLinejoin: 'round',
+        },
+        paths: [
+          { id: 'top', d: 'M3 12h18', fill: '#60a5fa' }, // Middle line (using fill for demo consistency, usually stroke)
+          { id: 'top-bar', d: 'M3 6h18', fill: '#60a5fa' },
+          { id: 'bottom-bar', d: 'M3 18h18', fill: '#60a5fa' },
+        ],
+      },
+      {
+        filename: 'close.svg',
+        svgAttrs: { viewBox: '0 0 24 24', fill: 'none' },
+        paths: [
+          { id: 'top', d: 'M18 6L6 18', fill: '#ef4444' },
+          { id: 'top-bar', d: 'M6 6l12 12', fill: '#ef4444' },
+          { id: 'bottom-bar', d: 'M0 0h0', fill: 'transparent' }, // Disappear
+        ],
+      },
+    ];
+
+    // 2. Shape Shifter (Circle -> Rect -> Star)
+    const shapesSvgs = [
+      {
+        filename: 'circle',
+        paths: [
+          {
+            id: 's',
+            d: 'M50,10 A40,40 0 1,1 50,90 A40,40 0 1,1 50,10',
+            fill: '#3B82F6',
           },
-          paths: [
-            { id: 'top', d: 'M3 12h18', fill: '#60a5fa' }, // Middle line (using fill for demo consistency, usually stroke)
-            { id: 'top-bar', d: 'M3 6h18', fill: '#60a5fa' },
-            { id: 'bottom-bar', d: 'M3 18h18', fill: '#60a5fa' },
-          ],
-        },
-        {
-          filename: 'close.svg',
-          svgAttrs: { viewBox: '0 0 24 24', fill: 'none' },
-          paths: [
-            { id: 'top', d: 'M18 6L6 18', fill: '#ef4444' },
-            { id: 'top-bar', d: 'M6 6l12 12', fill: '#ef4444' },
-            { id: 'bottom-bar', d: 'M0 0h0', fill: 'transparent' }, // Disappear
-          ],
-        },
-      ];
+        ],
+      },
+      {
+        filename: 'rect',
+        paths: [
+          { id: 's', d: 'M10,10 L90,10 L90,90 L10,90 Z', fill: '#8B5CF6' },
+        ],
+      },
+      {
+        filename: 'star',
+        paths: [
+          {
+            id: 's',
+            d: 'M50,5 L61,35 L95,35 L68,55 L79,85 L50,65 L21,85 L32,55 L5,35 L39,35 Z',
+            fill: '#F59E0B',
+          },
+        ],
+      },
+    ];
 
-      // 2. Shape Shifter (Circle -> Rect -> Star)
-      const shapesSvgs = [
-        {
-          filename: 'circle',
-          paths: [
-            {
-              id: 's',
-              d: 'M50,10 A40,40 0 1,1 50,90 A40,40 0 1,1 50,10',
-              fill: '#3B82F6',
-            },
-          ],
-        },
-        {
-          filename: 'rect',
-          paths: [
-            { id: 's', d: 'M10,10 L90,10 L90,90 L10,90 Z', fill: '#8B5CF6' },
-          ],
-        },
-        {
-          filename: 'star',
-          paths: [
-            {
-              id: 's',
-              d: 'M50,5 L61,35 L95,35 L68,55 L79,85 L50,65 L21,85 L32,55 L5,35 L39,35 Z',
-              fill: '#F59E0B',
-            },
-          ],
-        },
-      ];
+    // 3. Media (Play -> Pause)
+    const mediaSvgs = [
+      {
+        filename: 'play',
+        paths: [
+          { id: 'p1', d: 'M20,20 L80,50 L80,50 L20,80 Z', fill: '#10B981' },
+        ],
+      },
+      {
+        filename: 'pause',
+        paths: [
+          {
+            id: 'p1',
+            d: 'M20,20 L40,20 L40,80 L20,80 M60,20 L80,20 L80,80 L60,80',
+            fill: '#10B981',
+          },
+        ],
+      },
+    ];
 
-      // 3. Media (Play -> Pause)
-      const mediaSvgs = [
-        {
-          filename: 'play',
-          paths: [
-            { id: 'p1', d: 'M20,20 L80,50 L80,50 L20,80 Z', fill: '#10B981' },
-          ],
-        },
-        {
-          filename: 'pause',
-          paths: [
-            {
-              id: 'p1',
-              d: 'M20,20 L40,20 L40,80 L20,80 M60,20 L80,20 L80,80 L60,80',
-              fill: '#10B981',
-            },
-          ],
-        },
-      ];
+    // 4. Loader (Blob Morph)
+    const blobSvgs = [
+      {
+        paths: [
+          {
+            id: 'b',
+            d: 'M44.7,-76.4C58.9,-69.2,71.8,-59.1,81.6,-46.6C91.4,-34.1,98.1,-19.2,95.8,-5.3C93.5,8.6,82.2,21.5,71.6,33.1C61,44.7,51.1,55,39.6,63.4C28.1,71.8,15,78.3,1.3,76.1C-12.4,73.9,-26.7,63,-39.5,53.4C-52.3,43.8,-63.6,35.5,-71.2,24.4C-78.8,13.3,-82.7,-0.6,-79.3,-13.2C-75.9,-25.8,-65.2,-37.1,-53.6,-45.6C-42,-54.1,-29.5,-59.8,-17.2,-62.8C-4.9,-65.8,7.2,-66.1,20.5,-76.4',
+            fill: '#EC4899',
+          },
+        ],
+      },
+      {
+        paths: [
+          {
+            id: 'b',
+            d: 'M41.9,-73.3C54.6,-65.2,65.4,-54.6,73.6,-42.1C81.8,-29.6,87.4,-15.2,85.6,-1.5C83.8,12.2,74.6,25.2,64.6,36.4C54.6,47.6,43.8,57,31.7,63.9C19.6,70.8,6.2,75.2,-6.4,73.4C-19,71.6,-30.8,63.6,-41.8,55.1C-52.8,46.6,-63,37.6,-69.7,26.5C-76.4,15.4,-79.6,2.2,-76.6,-9.8C-73.6,-21.8,-64.4,-32.6,-54.2,-41.7C-44,-50.8,-32.8,-58.2,-21.1,-63.5C-9.4,-68.8,2.8,-72,15.9,-73.3',
+            fill: '#6366F1',
+          },
+        ],
+      },
+      {
+        paths: [
+          {
+            id: 'b',
+            d: 'M46.7,-77.3C60.6,-72.5,72.4,-61.8,80.4,-49.1C88.4,-36.4,92.6,-21.7,90.4,-7.9C88.2,5.9,79.6,18.8,69.9,30.3C60.2,41.8,49.4,51.9,37.4,59.3C25.4,66.7,12.2,71.4,-0.5,72.2C-13.2,73,-25.9,69.9,-37.4,63.2C-48.9,56.5,-59.2,46.2,-67.1,34.1C-75,22,-80.5,8.1,-78.9,-5.1C-77.3,-18.3,-68.6,-30.8,-58.3,-41.6C-48,-52.4,-36.1,-61.5,-23.4,-67.2C-10.7,-72.9,2.2,-75.2,16.7,-77.3',
+            fill: '#8B5CF6',
+          },
+        ],
+      },
+    ];
 
-      // 4. Loader (Blob Morph)
-      const blobSvgs = [
-        {
-          paths: [
-            {
-              id: 'b',
-              d: 'M44.7,-76.4C58.9,-69.2,71.8,-59.1,81.6,-46.6C91.4,-34.1,98.1,-19.2,95.8,-5.3C93.5,8.6,82.2,21.5,71.6,33.1C61,44.7,51.1,55,39.6,63.4C28.1,71.8,15,78.3,1.3,76.1C-12.4,73.9,-26.7,63,-39.5,53.4C-52.3,43.8,-63.6,35.5,-71.2,24.4C-78.8,13.3,-82.7,-0.6,-79.3,-13.2C-75.9,-25.8,-65.2,-37.1,-53.6,-45.6C-42,-54.1,-29.5,-59.8,-17.2,-62.8C-4.9,-65.8,7.2,-66.1,20.5,-76.4',
-              fill: '#EC4899',
-            },
-          ],
-        },
-        {
-          paths: [
-            {
-              id: 'b',
-              d: 'M41.9,-73.3C54.6,-65.2,65.4,-54.6,73.6,-42.1C81.8,-29.6,87.4,-15.2,85.6,-1.5C83.8,12.2,74.6,25.2,64.6,36.4C54.6,47.6,43.8,57,31.7,63.9C19.6,70.8,6.2,75.2,-6.4,73.4C-19,71.6,-30.8,63.6,-41.8,55.1C-52.8,46.6,-63,37.6,-69.7,26.5C-76.4,15.4,-79.6,2.2,-76.6,-9.8C-73.6,-21.8,-64.4,-32.6,-54.2,-41.7C-44,-50.8,-32.8,-58.2,-21.1,-63.5C-9.4,-68.8,2.8,-72,15.9,-73.3',
-              fill: '#6366F1',
-            },
-          ],
-        },
-        {
-          paths: [
-            {
-              id: 'b',
-              d: 'M46.7,-77.3C60.6,-72.5,72.4,-61.8,80.4,-49.1C88.4,-36.4,92.6,-21.7,90.4,-7.9C88.2,5.9,79.6,18.8,69.9,30.3C60.2,41.8,49.4,51.9,37.4,59.3C25.4,66.7,12.2,71.4,-0.5,72.2C-13.2,73,-25.9,69.9,-37.4,63.2C-48.9,56.5,-59.2,46.2,-67.1,34.1C-75,22,-80.5,8.1,-78.9,-5.1C-77.3,-18.3,-68.6,-30.8,-58.3,-41.6C-48,-52.4,-36.1,-61.5,-23.4,-67.2C-10.7,-72.9,2.2,-75.2,16.7,-77.3',
-              fill: '#8B5CF6',
-            },
-          ],
-        },
-      ];
-
-      const DemoCard = ({ title, svgs, duration, ease, badge }) => {
-        return React.createElement(
+    const DemoCard = ({ title, svgs, duration, ease, badge }) => {
+      return React.createElement(
+        'div',
+        { className: 'card' },
+        React.createElement('h2', null, title),
+        React.createElement(
           'div',
-          { className: 'card' },
-          React.createElement('h2', null, title),
-          React.createElement(
-            'div',
-            { className: 'demo-container' },
-            React.createElement(InterpolatedSvgsAnimation, {
-              svgs: svgs,
-              duration: duration,
-              ease: ease,
-              loop: true,
-              className: 'w-full h-full',
-            }),
-          ),
-          React.createElement('div', { className: 'badge' }, badge),
-        );
-      };
+          { className: 'demo-container' },
+          React.createElement(InterpolatedSvgsAnimation, {
+            svgs: svgs,
+            duration: duration,
+            ease: ease,
+            loop: true,
+            className: 'w-full h-full',
+          }),
+        ),
+        React.createElement('div', { className: 'badge' }, badge),
+      );
+    };
 
-      const App = () => {
-        return React.createElement(
-          'div',
-          { className: 'grid' },
-          React.createElement(DemoCard, {
-            title: 'Shape Morphing',
-            svgs: shapesSvgs,
-            duration: 2,
-            ease: 'easeInOut',
-            badge: "duration={2} ease='easeInOut'",
-          }),
-          React.createElement(DemoCard, {
-            title: 'Media Controls',
-            svgs: mediaSvgs,
-            duration: 0.5,
-            ease: 'circOut',
-            badge: "duration={0.5} ease='circOut'",
-          }),
-          React.createElement(DemoCard, {
-            title: 'Organic Blob',
-            svgs: blobSvgs,
-            duration: 4,
-            ease: 'linear',
-            badge: "duration={4} ease='linear'",
-          }),
-          React.createElement(DemoCard, {
-            title: 'Menu Interaction',
-            svgs: menuSvgs,
-            duration: 1,
-            ease: 'backInOut',
-            badge: "duration={1} ease='backInOut'",
-          }),
-        );
-      };
+    const App = () => {
+      return React.createElement(
+        'div',
+        { className: 'grid' },
+        React.createElement(DemoCard, {
+          title: 'Shape Morphing',
+          svgs: shapesSvgs,
+          duration: 2,
+          ease: 'easeInOut',
+          badge: "duration={2} ease='easeInOut'",
+        }),
+        React.createElement(DemoCard, {
+          title: 'Media Controls',
+          svgs: mediaSvgs,
+          duration: 0.5,
+          ease: 'circOut',
+          badge: "duration={0.5} ease='circOut'",
+        }),
+        React.createElement(DemoCard, {
+          title: 'Organic Blob',
+          svgs: blobSvgs,
+          duration: 4,
+          ease: 'linear',
+          badge: "duration={4} ease='linear'",
+        }),
+        React.createElement(DemoCard, {
+          title: 'Menu Interaction',
+          svgs: menuSvgs,
+          duration: 1,
+          ease: 'backInOut',
+          badge: "duration={1} ease='backInOut'",
+        }),
+      );
+    };
 
-      const root = createRoot(document.getElementById('root'));
-      root.render(React.createElement(App));
-    </script>
-  </body>
+    const root = createRoot(document.getElementById('root'));
+    root.render(React.createElement(App));
+  </script>
+</body>
+
 </html>
