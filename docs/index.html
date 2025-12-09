@@ -24,7 +24,7 @@
       "imports": {
         "react": "https://esm.sh/react@18.2.0?dev",
         "react-dom/client": "https://esm.sh/react-dom@18.2.0/client?dev&deps=react@18.2.0",
-        "framer-motion": "https://esm.sh/framer-motion@12.11.4?dev&deps=react@18.2.0,react-dom@18.2.0",
+        "framer-motion": "https://esm.sh/framer-motion@11.1.7?dev&deps=react@18.2.0,react-dom@18.2.0",
         "flubber": "https://esm.sh/flubber@0.4.2",
         "tailwind-merge": "https://esm.sh/tailwind-merge@3.3.0",
         "@ghassen_abida/svg_animation": "https://esm.sh/@ghassen_abida/svg_animation@latest?dev&external=react,react-dom,framer-motion,flubber"
@@ -74,6 +74,14 @@
             max-width: 600px;
             font-family: monospace;
         }
+
+        #test-box {
+            width: 50px;
+            height: 50px;
+            background: gold;
+            margin-bottom: 20px;
+            border-radius: 8px;
+        }
     </style>
 </head>
 
@@ -89,6 +97,7 @@
         import React from 'react';
         import { createRoot } from 'react-dom/client';
         import { InterpolatedSvgsAnimation } from '@ghassen_abida/svg_animation';
+        import { motion } from 'framer-motion';
 
         // Sample Data: Circle -> Rect -> Triangle
         const svgs = [
@@ -110,13 +119,21 @@
         ];
 
         const App = () => {
-            return React.createElement('div', { className: 'card' },
-                React.createElement(InterpolatedSvgsAnimation, {
-                    svgs: svgs,
-                    duration: 3,
-                    ease: "easeInOut",
-                    loop: true
-                })
+            return React.createElement('div', { style: { display: 'flex', flexDirection: 'column', alignItems: 'center' } },
+                // Test Animation to verify framer-motion works
+                React.createElement(motion.div, {
+                    id: 'test-box',
+                    animate: { rotate: 360 },
+                    transition: { duration: 2, repeat: Infinity }
+                }),
+                React.createElement('div', { className: 'card' },
+                    React.createElement(InterpolatedSvgsAnimation, {
+                        svgs: svgs,
+                        duration: 3,
+                        ease: "easeInOut",
+                        loop: true
+                    })
+                )
             );
         };
 
