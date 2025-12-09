@@ -7,7 +7,7 @@
     <title>Ganimation Playground</title>
     <script>
         // Polyfill for process.env.NODE_ENV
-        window.process = { env: { NODE_ENV: 'production' } };
+        window.process = { env: { NODE_ENV: 'development' } };
 
         // Error Trap
         window.onerror = function (message, source, lineno, colno, error) {
@@ -22,12 +22,12 @@
     <script type="importmap">
     {
       "imports": {
-        "react": "https://esm.sh/react@18.2.0",
-        "react-dom/client": "https://esm.sh/react-dom@18.2.0/client",
-        "framer-motion": "https://esm.sh/framer-motion@12.11.4",
+        "react": "https://esm.sh/react@18.2.0?dev",
+        "react-dom/client": "https://esm.sh/react-dom@18.2.0/client?dev&deps=react@18.2.0",
+        "framer-motion": "https://esm.sh/framer-motion@12.11.4?dev&deps=react@18.2.0,react-dom@18.2.0",
         "flubber": "https://esm.sh/flubber@0.4.2",
         "tailwind-merge": "https://esm.sh/tailwind-merge@3.3.0",
-        "@ghassen_abida/svg_animation": "https://esm.sh/@ghassen_abida/svg_animation@latest?external=react,react-dom,framer-motion,flubber"
+        "@ghassen_abida/svg_animation": "https://esm.sh/@ghassen_abida/svg_animation@latest?dev&external=react,react-dom,framer-motion,flubber"
       }
     }
     </script>
