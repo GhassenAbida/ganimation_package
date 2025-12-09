@@ -1,5 +1,7 @@
 # 🌀 ganimation_package
 
+[![minzip](https://img.shields.io/bundlephobia/minzip/@ghassen_abida/svg_animation?style=flat-square)](https://bundlephobia.com/package/@ghassen_abida/svg_animation)
+
 A lightweight, type-safe TypeScript package for animating SVG path transitions using [flubber](https://github.com/veltman/flubber) and [framer-motion](https://www.framer.com/motion/) in React. Interpolate smoothly between any number of SVG states with minimal setup.
 
 ---
