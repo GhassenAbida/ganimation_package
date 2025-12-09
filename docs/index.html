@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ganimation Playground</title>
+    <script type="importmap">
+    {
+      "imports": {
+        "react": "https://esm.sh/react@18.2.0",
+        "react-dom/client": "https://esm.sh/react-dom@18.2.0/client",
+        "@ghassen_abida/svg_animation": "https://esm.sh/@ghassen_abida/svg_animation@latest"
+      }
+    }
+    </script>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 40px;
+            background-color: #f9fafb;
+            color: #1f2937;
+        }
+
+        h1 {
+            margin-bottom: 10px;
+        }
+
+        p {
+            color: #6b7280;
+            margin-bottom: 40px;
+        }
+
+        .card {
+            background: white;
+            padding: 40px;
+            border-radius: 16px;
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+            width: 300px;
+            height: 300px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Ganimation Playground</h1>
+    <p>Live demo of @ghassen_abida/svg_animation running via CDN.</p>
+
+    <div id="root"></div>
+
+    <script type="module">
+        import React from 'react';
+        import { createRoot } from 'react-dom/client';
+        import { InterpolatedSvgsAnimation } from '@ghassen_abida/svg_animation';
+
+        // Sample Data: Circle -> Rect -> Triangle
+        const svgs = [
+            {
+                filename: 'circle.svg',
+                svgAttrs: { viewBox: '0 0 100 100', width: '100', height: '100', fill: 'none', xmlns: 'http://www.w3.org/2000/svg' },
+                paths: [{ id: 'shape', d: 'M50,10 A40,40 0 1,1 50,90 A40,40 0 1,1 50,10', fill: '#3B82F6' }],
+            },
+            {
+                filename: 'rect.svg',
+                svgAttrs: { viewBox: '0 0 100 100', width: '100', height: '100', fill: 'none', xmlns: 'http://www.w3.org/2000/svg' },
+                paths: [{ id: 'shape', d: 'M10,10 L90,10 L90,90 L10,90 Z', fill: '#EF4444' }],
+            },
+            {
+                filename: 'triangle.svg',
+                svgAttrs: { viewBox: '0 0 100 100', width: '100', height: '100', fill: 'none', xmlns: 'http://www.w3.org/2000/svg' },
+                paths: [{ id: 'shape', d: 'M50,10 L90,90 L10,90 Z', fill: '#10B981' }],
+            },
+        ];
+
+        const App = () => {
+            return React.createElement('div', { className: 'card' },
+                React.createElement(InterpolatedSvgsAnimation, {
+                    svgs: svgs,
+                    duration: 3,
+                    ease: "easeInOut",
+                    loop: true
+                })
+            );
+        };
+
+        const root = createRoot(document.getElementById('root'));
+        root.render(React.createElement(App));
+    </script>
+
+</body>
+
+</html>
