@@ -5,12 +5,29 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ganimation Playground</title>
+    <script>
+        // Polyfill for process.env.NODE_ENV
+        window.process = { env: { NODE_ENV: 'production' } };
+
+        // Error Trap
+        window.onerror = function (message, source, lineno, colno, error) {
+            const errorDiv = document.getElementById('error-log');
+            if (errorDiv) {
+                errorDiv.style.display = 'block';
+                errorDiv.innerHTML += `<p><strong>Error:</strong> ${message} at ${source}:${lineno}</p>`;
+            }
+            console.error(error);
+        };
+    </script>
     <script type="importmap">
     {
       "imports": {
         "react": "https://esm.sh/react@18.2.0",
         "react-dom/client": "https://esm.sh/react-dom@18.2.0/client",
-        "@ghassen_abida/svg_animation": "https://esm.sh/@ghassen_abida/svg_animation@latest"
+        "framer-motion": "https://esm.sh/framer-motion@12.11.4",
+        "flubber": "https://esm.sh/flubber@0.4.2",
+        "tailwind-merge": "https://esm.sh/tailwind-merge@3.3.0",
+        "@ghassen_abida/svg_animation": "https://esm.sh/@ghassen_abida/svg_animation@latest?external=react,react-dom,framer-motion,flubber"
       }
     }
     </script>
@@ -45,6 +62,18 @@
             justify-content: center;
             align-items: center;
         }
+
+        #error-log {
+            display: none;
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #fee2e2;
+            color: #991b1b;
+            border-radius: 8px;
+            width: 100%;
+            max-width: 600px;
+            font-family: monospace;
+        }
     </style>
 </head>
 
@@ -54,6 +83,7 @@
     <p>Live demo of @ghassen_abida/svg_animation running via CDN.</p>
 
     <div id="root"></div>
+    <div id="error-log"></div>
 
     <script type="module">
         import React from 'react';
