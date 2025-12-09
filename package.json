@@ -1,10 +1,20 @@
 {
   "name": "@ghassen_abida/svg_animation",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A package for svg animation",
   "keywords": [
     "animation",
-    "typescript"
+    "typescript",
+    "react",
+    "svg",
+    "morph",
+    "interpolation",
+    "framer-motion",
+    "flubber",
+    "transition",
+    "path-morphing",
+    "react-animation",
+    "ui"
   ],
   "homepage": "https://github.com/GhassenAbida/ganimation_package",
   "bugs": {
