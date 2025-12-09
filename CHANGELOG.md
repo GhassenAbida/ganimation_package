@@ -1,5 +1,11 @@
 # ganimation_package
 
+## 1.0.2
+
+### Patch Changes
+
+- Add bundle size badge to README
+
 ## 1.0.1
 
 ### Patch Changes
